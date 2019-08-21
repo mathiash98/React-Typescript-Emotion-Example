@@ -13,3 +13,23 @@ I chosed to not use OMDbAPI for listing movies since it only gives five fields w
 So I downloaded a dataset with movies from a couple of imdb lists which contains more info such as rating.
 
 However the info that appears when you click on a row is fetched from OMDbAPI since it gives a lot of info when looking for one special movie.
+
+## Demo
+![demo.gif]
+
+## Test the project
+1. Clone the repo
+2. Install NPM packages
+```sh
+npm install
+```
+3. Start react app
+```sh
+npm start
+```
+4. `localhost:3000` will open in browser
+
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+[demo.gif]: ./demo.gif
