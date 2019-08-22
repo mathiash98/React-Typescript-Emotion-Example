@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input } from '../styledComponents/theme';
+import { Form, Input } from '../styles/theme';
 
 export interface IFilterFormProps {
     onUpdate: (query: any) => void

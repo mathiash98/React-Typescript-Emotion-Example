@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ReactTable from "react-table";
-import "react-table/react-table.css";
+import "./styles/reactTable.css";
 import './App.css';
 
 import movieAPI, { IQuery } from './api/movieAPI';
 import FilterForm from './components/FilterForm';
 import MovieModal from './components/MovieModal';
 
-import { MainContainer } from './styledComponents/theme';
+import { MainContainer } from './styles/theme';
 
 const App: React.FC = () => {
   const [ state, setState ] = useState({
@@ -64,35 +64,38 @@ const App: React.FC = () => {
       {selectedMovie && <MovieModal imdbID={selectedMovie} closeModal={closeMovieModal}/>} 
       <MainContainer>
         <FilterForm onUpdate={findMovies}></FilterForm>
-        <ReactTable
-          data={movies}
-          columns={[
-            {
-              Header: "Title",
-              accessor: "Movie_Title"
-            }, {
-              Header: "Rating",
-              accessor: "Rating"
-            }, {
-              Header: "Runtime",
-              accessor: "Runtime"
-            }, {
-              Header: "Year",
-              accessor: "YR_Released"
-            }, {
-              Header: "imdbID",
-              accessor: "Movie_ID"
-            }
-          ]}
-          defaultSorted={[
-            {
-              id: "Rating",
-              desc: true
-            }
-          ]}
-          getTrProps={onRowClick}
-          defaultPageSize={15}
-        />
+        {state.loading ? <h3>Loading</h3> : (
+
+          <ReactTable
+            data={movies}
+            columns={[
+              {
+                Header: "Title",
+                accessor: "Movie_Title"
+              }, {
+                Header: "Rating",
+                accessor: "Rating"
+              }, {
+                Header: "Runtime",
+                accessor: "Runtime"
+              }, {
+                Header: "Year",
+                accessor: "YR_Released"
+              }, {
+                Header: "imdbID",
+                accessor: "Movie_ID"
+              }
+            ]}
+            defaultSorted={[
+              {
+                id: "Rating",
+                desc: true
+              }
+            ]}
+            getTrProps={onRowClick}
+            defaultPageSize={15}
+          />
+        )}
       </MainContainer>
     </>
   );

@@ -22,7 +22,7 @@ const movieAPI = {
                 let paramsVerified: number = 0;
 
                 if (query.search && (movie.Movie_Title as string).toLowerCase().indexOf(query.search.toLowerCase()) > -1) paramsVerified++;
-                if (query.year && movie.YR_Released == query.year) paramsVerified++;
+                if (query.year && movie.YR_Released === Number(query.year)) paramsVerified++;
                 if (query.rating && movie.Rating >= query.rating) paramsVerified++;
 
                 if(params === paramsVerified) {

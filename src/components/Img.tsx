@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from '../styledComponents/theme';
+import { Image } from '../styles/theme';
 
 export interface IImgRowProps {
     src: string

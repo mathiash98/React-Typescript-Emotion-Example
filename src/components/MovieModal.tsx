@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Img from './Img';
 
-import { Modal, ModalHeader, CloseButton, DetailsList } from '../styledComponents/theme';
+import { Modal, ModalHeader, CloseButton, DetailsList } from '../styles/theme';
 
 export interface IMovieModalProps {
     "imdbID": string,
