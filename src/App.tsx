@@ -8,6 +8,7 @@ import FilterForm from './components/FilterForm';
 import MovieModal from './components/MovieModal';
 
 import { MainContainer } from './styles/theme';
+import CustomTable from './components/CustomTable/CustomTable';
 
 const App: React.FC = () => {
   const [ state, setState ] = useState({
@@ -65,8 +66,19 @@ const App: React.FC = () => {
       <MainContainer>
         <FilterForm onUpdate={findMovies}></FilterForm>
         {state.loading ? <h3>Loading</h3> : (
-
-          <ReactTable
+          <>
+          <CustomTable
+            data={movies}
+            keys={["Movie_Title", "Rating", "Runtime", "YR_Released", "Movie_ID"]}
+            headers={["Title", "Rating", "Runtime", "Year", "imdbID"]}
+            perPage={20}
+            onClick={(data: {[key:string]: any}) => setSelectedMovie(data.Movie_ID)}
+            defaultSorted={{
+              key: "Rating",
+              order: -1
+            }}
+          />
+          {/* <ReactTable
             data={movies}
             columns={[
               {
@@ -94,7 +106,8 @@ const App: React.FC = () => {
             ]}
             getTrProps={onRowClick}
             defaultPageSize={15}
-          />
+          /> */}
+          </>
         )}
       </MainContainer>
     </>
